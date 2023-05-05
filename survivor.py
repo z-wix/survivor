@@ -1,6 +1,5 @@
 '''
 ===================================================================================================
-NAME          : Su
 DESCRIPTION   : Analyze Survivor Contestant Stats 
 AUTHOR(S)     : Zack Wixom
 DATE          : 2023-04-21
