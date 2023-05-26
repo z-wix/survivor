@@ -11,6 +11,23 @@ library(tidyverse)
 library(tidymodels)
 library(ggthemes)
 
-data <- read_csv(here::here("Data", "survey_data.csv"))
+survivors<- read_csv(here::here("data", "survivor.csv"))
 
 ```
+
+### Exploratory Data Analysis
+
+First let's take a look into our data and see if there are any distributions we should be concerned about before implementing some modeling
+
+```{r}
+head(survivors)
+
+colnames(survivors)
+```
+
+```{r}
+survivors %>% 
+  ggplot() +
+  geom_col(aes(x = Season, y = Finish))
+```
+
