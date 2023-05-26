@@ -55,6 +55,9 @@ survivors['Birthday'] = pd.to_datetime(survivors['Birthday'])
 # Drop empty column
 survivors = survivors.drop(columns= ['Unnamed: 51'])
 
+# Save cleaned dataset
+survivors.to_csv('data/survivor.csv')
+
 # Grouping by Placement and Age
 placement_mean_age = survivors.groupby('Finish').agg(
     mean_age = ('Age', np.mean),
