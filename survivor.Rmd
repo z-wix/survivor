@@ -1,1 +1,16 @@
-# test 
+---
+title: "survivoR"
+subtitle: "A Tidymodels Approach to an analysis of Survivor"
+author: "Zack Wixom"
+output: github_document
+---
+
+```{r setup, echo=FALSE}
+# Packages
+library(tidyverse)
+library(tidymodels)
+library(ggthemes)
+
+data <- read_csv(here::here("Data", "survey_data.csv"))
+
+```
