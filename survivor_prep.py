@@ -1,16 +1,14 @@
 '''
 ===================================================================================================
-DESCRIPTION   : Analyze Survivor Contestant Stats 
+DESCRIPTION   : Prep and Anonymize Survivor Data
 AUTHOR        : Zack Wixom
-DATE UPDATED  : 2023-05-05
+DATE UPDATED  : 2023-08-11
 VERSION       : 0.01
 ===================================================================================================
 '''
 import pandas as pd
 import numpy as np
 from anonymizedf.anonymizedf import anonymize
-import plotly.express as px
-import plotly.graph_objects as go
 from datetime import datetime
 
 '''
@@ -56,35 +54,4 @@ survivors['Birthday'] = pd.to_datetime(survivors['Birthday'])
 survivors = survivors.drop(columns= ['Unnamed: 51'])
 
 # Save cleaned dataset
-survivors.to_csv('data/survivor.csv')
-
-# Grouping by Placement and Age
-placement_mean_age = survivors.groupby('Finish').agg(
-    mean_age = ('Age', np.mean),
-    median_age = ('Age', np.median),
-    num_contestants = ('contestant', np.size)
-).reset_index()
-
-# Chart for mean age and num of contestants per placement
-fig = px.bar(
-    placement_mean_age, 
-    x = 'Finish',
-    y = 'median_age',
-    title = 'Mean Age of Contestant Placement'
-    ).add_trace(go.Scatter(
-        # x = placement_mean_age.Finish,
-        y = placement_mean_age.num_contestants, 
-        mode = 'lines',
-        name = 'n Contestants'
-    ))
-fig.show()
-
-
-# Histogram of Ages in Survivors
-fig = px.histogram(
-    survivors, 
-    x = 'Age'
-    )
-fig.show()
-
-
+survivors.to_csv('data/survivor.csv', index= False)

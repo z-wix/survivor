@@ -1,2 +1,4 @@
 *_env
 .Rproj.user
+.RData
+.Rhistory
