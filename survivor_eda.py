@@ -79,16 +79,16 @@ survivors_num = survivors.select_dtypes(include= numerics)
 
 survivors[survivors_num.columns].corr()
 
-survivors[survivors_num.columns].corr().style.background_gradient(cmap='coolwarm')
+survivors[survivors_num.columns].corr().style.background_gradient(cmap='vlag')
 
 
-corrmat = survivors[survivors_num.columns].corr()
-mask= np.zeros_like(corrmat)
-mask[np.triu_indices_from(mask)] = True
-sns.heatmap(corrmat,
-            vmax=1, vmin=0,
-            annot=True, annot_kws={'fontsize':10},
-            mask=mask,
-            cmap=sns.diverging_palette(20,220, n = 10, as_cmap=True))
+# corrmat = survivors[survivors_num.columns].corr()
+# mask= np.zeros_like(corrmat)
+# mask[np.triu_indices_from(mask)] = True
+# sns.heatmap(corrmat,
+#             vmax=1, vmin=0,
+#             annot=True, annot_kws={'fontsize':10},
+#             mask=mask,
+#             cmap=sns.diverging_palette(20,220, n = 10, as_cmap=True))
 
 
