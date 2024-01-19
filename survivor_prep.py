@@ -53,5 +53,44 @@ survivors['Birthday'] = pd.to_datetime(survivors['Birthday'])
 # Drop empty column
 survivors = survivors.drop(columns= ['Unnamed: 51'])
 
+'''
+Interested Columns
+'''
+
+columns_interest = [
+    # Identification Cols
+    'PID',
+    'contestant',
+    'Age',
+    'Sex',
+    'Birthday',
+    # Season Specific Cols
+    'Season',
+    'Finish',
+    'Day 1 Filming date',
+    'Days',
+    # Summary Cols
+    'SurvAv',           # ChW + wTCR + (6 * JV%)
+    'SurvSc',           # ChW% + TC% + JV%
+    'NoJ',              
+    # Challenge Cols
+    'ChW%',             # Challenges Won / Challenges Appeared
+    'InChW%',           # Individual Immunity Wins / Individual Immunity Appearances
+    'TChW%',            # Tribe Challenges Won / Tribe Challenges Appeared
+    'SO',               # Sit outs during Challenges
+    # Voting Cols
+    'TC%',              # Votes Cast Towards Voted-Out Player - (Votes Cast Against Them / Total Votes in Council)
+    'wTCR',             # Weighted Version of TC% = (VFB *28) - ((VAP *4)/ TotV)
+    'VFB%',             # Ratio of Voting Correctly
+    'nVFB%',            # Ratio of Voting Incorrectly
+    'VAT%',             # Percent of Tribals attended that they recieved atleast one vote
+    # Jury Cols
+    'JV%',              # Jury Votes Recieved / Total Jury Votes
+    # Other
+    'Exile',            # Number of Days spent in Exile Island
+    'Time'              # Number of Seasons they have played
+]
+
 # Save cleaned dataset
+survivors = survivors[columns_interest]
 survivors.to_csv('data/survivor.csv', index= False)
